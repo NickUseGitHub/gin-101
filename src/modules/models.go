@@ -4,12 +4,12 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 
-	"github.com/NickUseGitHub/gin-101/src/modules/book"
+	bookEntity "github.com/NickUseGitHub/gin-101/src/modules/book"
 )
 
 var DB *gorm.DB
 
-func ConnectDatabase() {
+func ConnectDatabase() *gorm.DB {
 	dsn := "host=localhost user=go_db password=go_db dbname=go_db port=5432 sslmode=disable TimeZone=Asia/Bangkok"
 	database, err := gorm.Open("postgres", dsn)
 
@@ -17,7 +17,7 @@ func ConnectDatabase() {
 		panic("Failed to connect to database!")
 	}
 
-	database.AutoMigrate(&book.Book{})
+	database.AutoMigrate(&bookEntity.Book{})
 
-	DB = database
+	return database
 }
