@@ -4,6 +4,9 @@ DB_USERNAME := go_db
 DB_PASSWORD := go_db
 DB_PORT := 5432
 
+start:
+	go run src/main.go
+
 migrate-create:
 	migrate create -ext sql -dir src/migrations -seq $(MIGRATION_NAME)
 

@@ -3,8 +3,6 @@ package modules
 import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-
-	bookEntity "github.com/NickUseGitHub/gin-101/src/modules/book"
 )
 
 var DB *gorm.DB
@@ -16,8 +14,6 @@ func ConnectDatabase() *gorm.DB {
 	if err != nil {
 		panic("Failed to connect to database!")
 	}
-
-	database.AutoMigrate(&bookEntity.Book{})
 
 	return database
 }
